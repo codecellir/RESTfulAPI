@@ -24,7 +24,7 @@ namespace RESTFulAPI.Services
 
         public async Task<Student> GetByIdAsync(int id)
         {
-            return await _context.Students.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Students.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Student> InsertStudentAsync(Student student)
