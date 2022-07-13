@@ -1,11 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using RESTFulAPI.Data;
+using RESTFulAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddDbContext<AppDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
